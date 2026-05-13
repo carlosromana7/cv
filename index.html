@@ -12,7 +12,6 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 img{max-width:100%;display:block}
 
-/* ── DESIGN SYSTEM (Compact Swiss Modernism) ── */
 :root{
   --col-bg:#FAFAFA;
   --col-white:#FFFFFF;
@@ -23,6 +22,9 @@ img{max-width:100%;display:block}
   --col-accent:#2563EB;
   --col-accent2:#1D4ED8;
   --col-accent-t:rgba(37,99,235,.08);
+  --col-accent-light:rgba(37,99,235,.06);
+  --col-warn:#f59e0b;
+  --col-success:#10b981;
   --font-head:'Poppins',sans-serif;
   --font-body:'Open Sans',sans-serif;
   --radius:4px;
@@ -35,7 +37,6 @@ img{max-width:100%;display:block}
   *{transition:none!important;animation:none!important}
 }
 
-/* ── BASE ── */
 html{scroll-behavior:smooth}
 body{
   font-family:var(--font-body);
@@ -46,10 +47,9 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* ── LAYOUT ── */
 .wrapper{max-width:1080px;margin:24px auto;padding:0 20px}
 
-/* ── HERO (Compacto) ── */
+/* ── HERO ── */
 .hero{
   background:var(--col-white);
   border:1px solid var(--col-line);
@@ -133,7 +133,7 @@ body{
   align-items:start;
 }
 
-/* ── CARD (Compacta) ── */
+/* ── CARD ── */
 .card{
   background:var(--col-white);
   border:1px solid var(--col-line);
@@ -166,11 +166,10 @@ body{
 }
 .card-body{padding:16px}
 
-/* ── SUMMARY ── */
 .summary{font-size:.85rem;color:var(--col-muted);line-height:1.7}
 .summary strong{color:var(--col-text);font-weight:600}
 
-/* ── TIMELINE (Compacta) ── */
+/* ── TIMELINE ── */
 .timeline{position:relative;padding-left:28px}
 .timeline::before{
   content:'';position:absolute;
@@ -234,35 +233,210 @@ body{
   margin-bottom:6px;
 }
 
-/* ── SIDEBAR SKILLS (Compactas) ── */
-.sk-item{margin-bottom:12px}
-.sk-item:last-child{margin-bottom:0}
-.sk-row{
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:.78rem;color:var(--col-text);margin-bottom:3px;
+/* ═══════════════════════════════════════════════════════ */
+/* ══ NUEVO: HABILIDADES MEJORADAS ══ */
+/* ═══════════════════════════════════════════════════════ */
+
+.skill-category{
+  margin-bottom:18px;
 }
-.sk-pct{font-size:.68rem;font-weight:700;color:var(--col-accent)}
-.sk-track{height:3px;background:var(--col-line);border-radius:2px;overflow:hidden}
-.sk-fill{
-  height:100%;border-radius:2px;
-  background:var(--col-accent);
-  width:0;transition:width 1s ease;
+.skill-category:last-child{margin-bottom:0}
+
+.skill-cat-header{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:10px;
+  cursor:pointer;
+  user-select:none;
+  padding:4px 0;
 }
 
-/* ── TAG CLOUD (Compacto) ── */
-.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
-.tag{
-  font-size:.68rem;font-weight:500;
+.skill-cat-icon{
+  width:26px;height:26px;
+  border-radius:var(--radius);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  font-size:13px;
+}
+
+.skill-cat-title{
+  font-family:var(--font-head);
+  font-size:.82rem;
+  font-weight:700;
+  color:var(--col-text);
+  flex:1;
+}
+
+.skill-cat-toggle{
+  font-size:.7rem;
+  color:var(--col-muted);
+  transition:transform var(--transition);
+  width:16px;
+  text-align:center;
+}
+.skill-category.collapsed .skill-cat-toggle{
+  transform:rotate(-90deg);
+}
+
+/* Colores por categoría */
+.cat-net .skill-cat-icon{background:rgba(37,99,235,.1);color:var(--col-accent)}
+.cat-sec .skill-cat-icon{background:rgba(239,68,68,.1);color:#ef4444}
+.cat-infra .skill-cat-icon{background:rgba(16,185,129,.1);color:var(--col-success)}
+.cat-auto .skill-cat-icon{background:rgba(245,158,11,.1);color:var(--col-warn)}
+
+.skill-items{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  padding-left:34px;
+  transition:all var(--transition);
+  overflow:hidden;
+}
+.skill-category.collapsed .skill-items{
+  max-height:0;
+  opacity:0;
+  margin-top:0;
+  gap:0;
+}
+
+.skill-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:6px 10px;
+  border-radius:var(--radius);
+  transition:background var(--transition);
+}
+.skill-row:hover{
+  background:var(--col-accent-light);
+}
+
+.skill-name-area{
+  flex:1;
+  min-width:0;
+}
+
+.skill-name{
+  font-size:.78rem;
+  font-weight:600;
+  color:var(--col-text);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+/* Badge de certificación inline */
+.skill-badge{
+  font-size:.58rem;
+  font-weight:700;
+  letter-spacing:.3px;
+  text-transform:uppercase;
+  padding:1px 5px;
+  border-radius:2px;
+  white-space:nowrap;
+}
+.skill-badge.ccnp{background:rgba(37,99,235,.1);color:var(--col-accent);border:1px solid rgba(37,99,235,.2)}
+.skill-badge.nse{background:rgba(239,68,68,.1);color:#dc2626;border:1px solid rgba(239,68,68,.2)}
+.skill-badge.spec{background:var(--col-bg);color:var(--col-muted);border:1px solid var(--col-line)}
+
+.skill-sub{
+  font-size:.68rem;
+  color:var(--col-muted);
+  margin-top:1px;
+  line-height:1.4;
+}
+
+/* Nivel con dots */
+.skill-level{
+  display:flex;
+  gap:3px;
+  flex-shrink:0;
+}
+.level-dot{
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--col-line);
+  transition:background var(--transition);
+}
+.level-dot.active{
+  background:var(--col-accent);
+}
+.cat-sec .level-dot.active{background:#ef4444}
+.cat-infra .level-dot.active{background:var(--col-success)}
+.cat-auto .level-dot.active{background:var(--col-warn)}
+
+/* Tooltip de experiencia */
+.skill-row[data-exp]:hover::after{
+  content:attr(data-exp);
+  position:absolute;
+  right:0;
+  top:-24px;
+  background:var(--col-text);
+  color:var(--col-white);
+  font-size:.65rem;
+  padding:2px 8px;
+  border-radius:var(--radius);
+  white-space:nowrap;
+  z-index:10;
+}
+.skill-row{position:relative}
+
+/* Tags de stack mejorados */
+.stack-section{
+  margin-top:16px;
+  padding-top:14px;
+  border-top:1px solid var(--col-line);
+}
+
+.stack-title{
+  font-size:.62rem;
+  font-weight:700;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  color:var(--col-muted);
+  margin-bottom:10px;
+}
+
+.stack-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
+.stack-tag{
+  font-size:.72rem;
+  font-weight:500;
   background:var(--col-bg);
   border:1px solid var(--col-line);
   color:var(--col-mid);
-  padding:2px 8px;border-radius:2px;
-  transition:border-color var(--transition),color var(--transition);
+  padding:4px 10px;
+  border-radius:var(--radius);
+  transition:all var(--transition);
   cursor:default;
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
 }
-.tag:hover{border-color:var(--col-accent);color:var(--col-accent)}
 
-/* ── CERT LIST (Compacto) ── */
+.stack-tag:hover{
+  border-color:var(--col-accent);
+  color:var(--col-accent);
+  background:var(--col-accent-t);
+}
+
+.stack-tag .tag-dot{
+  width:5px;height:5px;
+  border-radius:50%;
+  background:var(--col-line);
+}
+.stack-tag:hover .tag-dot{
+  background:var(--col-accent);
+}
+
+/* ── CERT LIST ── */
 .cert-list{display:flex;flex-direction:column;gap:6px}
 .cert-item{
   display:flex;align-items:flex-start;gap:8px;
@@ -277,7 +451,7 @@ body{
 .cert-name{font-size:.78rem;font-weight:600;color:var(--col-text);line-height:1.3}
 .cert-sub{font-size:.68rem;color:var(--col-muted)}
 
-/* ── EDU LIST (Compacto) ── */
+/* ── EDU LIST ── */
 .edu-list{display:flex;flex-direction:column;gap:0}
 .edu-item{
   padding:10px 0;
@@ -297,7 +471,7 @@ body{
 .edu-title{font-size:.82rem;font-weight:600;color:var(--col-text);line-height:1.3}
 .edu-date{font-size:.68rem;color:var(--col-muted);margin-top:2px}
 
-/* ── LANG (Compacto) ── */
+/* ── LANG ── */
 .lang-item{margin-bottom:10px}
 .lang-item:last-child{margin-bottom:0}
 .lang-row{
@@ -308,7 +482,7 @@ body{
 .lang-track{height:3px;background:var(--col-line);border-radius:2px;overflow:hidden}
 .lang-fill{height:100%;border-radius:2px;background:var(--col-accent);width:0;transition:width 1s ease}
 
-/* ── AWARD (Compacto) ── */
+/* ── AWARD ── */
 .award-item{
   display:flex;align-items:center;gap:12px;
   padding:10px 0;border-bottom:1px solid var(--col-line);
@@ -337,6 +511,7 @@ body{
   .chip-row{justify-content:center}
   .body-grid{grid-template-columns:1fr}
   .wrapper{margin:16px auto;padding:0 14px}
+  .skill-items{padding-left:10px}
 }
 </style>
 </head>
@@ -562,7 +737,9 @@ body{
     <!-- ══ SIDEBAR ══ -->
     <div>
 
-      <!-- Habilidades -->
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <!-- ══ HABILIDADES MEJORADAS ══ -->
+      <!-- ═══════════════════════════════════════════════════════ -->
       <div class="card">
         <div class="card-head">
           <div class="card-head-icon">
@@ -571,48 +748,258 @@ body{
           <h2>Habilidades Técnicas</h2>
         </div>
         <div class="card-body">
-          <div class="sk-item">
-            <div class="sk-row"><span>Redes Cisco / CCNP</span><span class="sk-pct">95%</span></div>
-            <div class="sk-track"><div class="sk-fill" data-w="95%"></div></div>
-          </div>
-          <div class="sk-item">
-            <div class="sk-row"><span>Ciberseguridad / ISO 27001</span><span class="sk-pct">90%</span></div>
-            <div class="sk-track"><div class="sk-fill" data-w="90%"></div></div>
-          </div>
-          <div class="sk-item">
-            <div class="sk-row"><span>Linux / Servidores</span><span class="sk-pct">90%</span></div>
-            <div class="sk-track"><div class="sk-fill" data-w="90%"></div></div>
-          </div>
-          <div class="sk-item">
-            <div class="sk-row"><span>Fortinet / SD-WAN</span><span class="sk-pct">88%</span></div>
-            <div class="sk-track"><div class="sk-fill" data-w="88%"></div></div>
-          </div>
-          <div class="sk-item">
-            <div class="sk-row"><span>Monitoring Stack</span><span class="sk-pct">88%</span></div>
-            <div class="sk-track"><div class="sk-fill" data-w="88%"></div></div>
-          </div>
-          <div class="sk-item">
-            <div class="sk-row"><span>Docker / Virtualización</span><span class="sk-pct">82%</span></div>
-            <div class="sk-track"><div class="sk-fill" data-w="82%"></div></div>
-          </div>
-          <div class="sk-item">
-            <div class="sk-row"><span>Ansible / Automatización</span><span class="sk-pct">80%</span></div>
-            <div class="sk-track"><div class="sk-fill" data-w="80%"></div></div>
-          </div>
 
-          <div style="margin-top:14px">
-            <p style="font-size:.62rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--col-muted);margin-bottom:8px">Stack</p>
-            <div class="tags">
-              <span class="tag">Grafana</span><span class="tag">Prometheus</span>
-              <span class="tag">Netdata</span><span class="tag">Nginx</span>
-              <span class="tag">PostgreSQL</span><span class="tag">Wazuh</span>
-              <span class="tag">Netbox</span><span class="tag">Ansible</span>
-              <span class="tag">Cisco Meraki</span><span class="tag">Cisco ASA</span>
-              <span class="tag">Peplink</span><span class="tag">Ubiquiti</span>
-              <span class="tag">PRTG</span><span class="tag">Nagios</span>
-              <span class="tag">Active Directory</span><span class="tag">Pentaho ETL</span>
+          <!-- Redes & Routing -->
+          <div class="skill-category cat-net" data-exp="10+ años">
+            <div class="skill-cat-header" onclick="this.parentElement.classList.toggle('collapsed')">
+              <div class="skill-cat-icon">🌐</div>
+              <span class="skill-cat-title">Redes & Routing</span>
+              <span class="skill-cat-toggle">▼</span>
+            </div>
+            <div class="skill-items">
+              <div class="skill-row" data-exp="10+ años">
+                <div class="skill-name-area">
+                  <div class="skill-name">
+                    Cisco Enterprise
+                    <span class="skill-badge ccnp">CCNP</span>
+                  </div>
+                  <div class="skill-sub">OSPF, EIGRP, BGP, MPLS, VRF, SD-Access</div>
+                </div>
+                <div class="skill-level">
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                </div>
+              </div>
+              <div class="skill-row" data-exp="8 años">
+                <div class="skill-name-area">
+                  <div class="skill-name">Switching & LAN</div>
+                  <div class="skill-sub">VLAN, STP, VTP, EtherChannel, VPC</div>
+                </div>
+                <div class="skill-level">
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                </div>
+              </div>
+              <div class="skill-row" data-exp="6 años">
+                <div class="skill-name-area">
+                  <div class="skill-name">Wireless & SD-WAN</div>
+                  <div class="skill-sub">Cisco Meraki, Ubiquiti, Fortinet SD-WAN</div>
+                </div>
+                <div class="skill-level">
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot"></span>
+                </div>
+              </div>
+              <div class="skill-row" data-exp="5 años">
+                <div class="skill-name-area">
+                  <div class="skill-name">VoIP & Telecom</div>
+                  <div class="skill-sub">Elastix, Yeastar, Grandstream, Peplink</div>
+                </div>
+                <div class="skill-level">
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot"></span>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- Seguridad -->
+          <div class="skill-category cat-sec" data-exp="8 años">
+            <div class="skill-cat-header" onclick="this.parentElement.classList.toggle('collapsed')">
+              <div class="skill-cat-icon">🛡️</div>
+              <span class="skill-cat-title">Ciberseguridad</span>
+              <span class="skill-cat-toggle">▼</span>
+            </div>
+            <div class="skill-items">
+              <div class="skill-row" data-exp="8 años">
+                <div class="skill-name-area">
+                  <div class="skill-name">
+                    Fortinet Security
+                    <span class="skill-badge nse">NSE4</span>
+                  </div>
+                  <div class="skill-sub">NGFW, IPS/IDS, VPN IPsec/SSL, ZTNA, FortiSwitch</div>
+                </div>
+                <div class="skill-level">
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot"></span>
+                </div>
+              </div>
+              <div class="skill-row" data-exp="5 años">
+                <div class="skill-name-area">
+                  <div class="skill-name">Gobernanza & Frameworks</div>
+                  <div class="skill-sub">ISO 27001, NIST CSF, políticas, auditoría</div>
+                </div>
+                <div class="skill-level">
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot"></span>
+                </div>
+              </div>
+              <div class="skill-row" data-exp="4 años">
+                <div class="skill-name-area">
+                  <div class="skill-name">SIEM & Threat Detection</div>
+                  <div class="skill-sub">Wazuh, análisis de logs, correlación de eventos</div>
+                </div>
+                <div class="skill-level">
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot"></span>
+                  <span class="level-dot"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Infraestructura -->
+          <div class="skill-category cat-infra" data-exp="8 años">
+            <div class="skill-cat-header" onclick="this.parentElement.classList.toggle('collapsed')">
+              <div class="skill-cat-icon">⚙️</div>
+              <span class="skill-cat-title">Infraestructura & Cloud</span>
+              <span class="skill-cat-toggle">▼</span>
+            </div>
+            <div class="skill-items">
+              <div class="skill-row" data-exp="8 años">
+                <div class="skill-name-area">
+                  <div class="skill-name">Linux Administration</div>
+                  <div class="skill-sub">RHEL/CentOS, Debian, servicios críticos, hardening</div>
+                </div>
+                <div class="skill-level">
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                </div>
+              </div>
+              <div class="skill-row" data-exp="6 años">
+                <div class="skill-name-area">
+                  <div class="skill-name">Virtualización</div>
+                  <div class="skill-sub">VMware vSphere, Proxmox, migraciones P2V</div>
+                </div>
+                <div class="skill-level">
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot"></span>
+                </div>
+              </div>
+              <div class="skill-row" data-exp="5 años">
+                <div class="skill-name-area">
+                  <div class="skill-name">Containers & Orchestration</div>
+                  <div class="skill-sub">Docker, Docker Compose, Nginx reverse proxy</div>
+                </div>
+                <div class="skill-level">
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot"></span>
+                </div>
+              </div>
+              <div class="skill-row" data-exp="6 años">
+                <div class="skill-name-area">
+                  <div class="skill-name">Monitoring & Observability</div>
+                  <div class="skill-sub">Grafana, Prometheus, PRTG, Nagios, Netdata</div>
+                </div>
+                <div class="skill-level">
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Automatización -->
+          <div class="skill-category cat-auto" data-exp="4 años">
+            <div class="skill-cat-header" onclick="this.parentElement.classList.toggle('collapsed')">
+              <div class="skill-cat-icon">⚡</div>
+              <span class="skill-cat-title">Automatización & DevOps</span>
+              <span class="skill-cat-toggle">▼</span>
+            </div>
+            <div class="skill-items">
+              <div class="skill-row" data-exp="4 años">
+                <div class="skill-name-area">
+                  <div class="skill-name">Ansible</div>
+                  <div class="skill-sub">Playbooks, roles, automatización de Fortinet/Linux</div>
+                </div>
+                <div class="skill-level">
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot"></span>
+                </div>
+              </div>
+              <div class="skill-row" data-exp="5 años">
+                <div class="skill-name-area">
+                  <div class="skill-name">Scripting & APIs</div>
+                  <div class="skill-sub">Bash, Python, NRPE plugins, FortiAPI, REST</div>
+                </div>
+                <div class="skill-level">
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot"></span>
+                </div>
+              </div>
+              <div class="skill-row" data-exp="3 años">
+                <div class="skill-name-area">
+                  <div class="skill-name">IaC & CMDB</div>
+                  <div class="skill-sub">NetBox, documentación como código, Git</div>
+                </div>
+                <div class="skill-level">
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot active"></span>
+                  <span class="level-dot"></span>
+                  <span class="level-dot"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stack Tags -->
+          <div class="stack-section">
+            <div class="stack-title">Stack Tecnológico</div>
+            <div class="stack-grid">
+              <span class="stack-tag"><span class="tag-dot"></span>Cisco IOS/IOS-XE</span>
+              <span class="stack-tag"><span class="tag-dot"></span>FortiOS</span>
+              <span class="stack-tag"><span class="tag-dot"></span>Linux</span>
+              <span class="stack-tag"><span class="tag-dot"></span>Docker</span>
+              <span class="stack-tag"><span class="tag-dot"></span>Ansible</span>
+              <span class="stack-tag"><span class="tag-dot"></span>Grafana</span>
+              <span class="stack-tag"><span class="tag-dot"></span>Prometheus</span>
+              <span class="stack-tag"><span class="tag-dot"></span>PostgreSQL</span>
+              <span class="stack-tag"><span class="tag-dot"></span>Nginx</span>
+              <span class="stack-tag"><span class="tag-dot"></span>Wazuh</span>
+              <span class="stack-tag"><span class="tag-dot"></span>NetBox</span>
+              <span class="stack-tag"><span class="tag-dot"></span>Git</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -715,8 +1102,9 @@ body{
 </div><!-- /wrapper -->
 
 <script>
+/* Animate bars on scroll */
 document.addEventListener('DOMContentLoaded', () => {
-  const fills = document.querySelectorAll('.sk-fill, .lang-fill');
+  const fills = document.querySelectorAll('.lang-fill');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
