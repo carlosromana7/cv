@@ -1,433 +1,834 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV de Carlos Romaña Tuesta</title>
-    <style>
-        :root {
-            --primary-color: #1a237e;
-            --secondary-color: #00bcd4;
-            --accent-color: #ffc107;
-            --text-color: #333;
-            --bg-color: #f5f5f5;
-        }
-        body {
-            font-family: 'Roboto', 'Arial', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            position: relative;
-        }
-        .profile-picture {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 4px solid white;
-            margin-bottom: 20px;
-            object-fit: cover;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        .subtitle {
-            font-size: 1.2em;
-            margin-top: 10px;
-            opacity: 0.9;
-        }
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        .contact-item {
-            margin: 5px 10px;
-            display: flex;
-            align-items: center;
-            background-color: rgba(255,255,255,0.2);
-            padding: 8px 15px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
-        .contact-item:hover {
-            background-color: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-        }
-        .contact-item svg {
-            margin-right: 8px;
-        }
-        main {
-            padding: 30px;
-        }
-        section {
-            margin-bottom: 30px;
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        section:hover {
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-            transform: translateY(-2px);
-        }
-        .section-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .section-header:hover {
-            background-color: #2a3f9e;
-        }
-        .section-title {
-            display: flex;
-            align-items: center;
-        }
-        .section-icon {
-            margin-right: 10px;
-            font-size: 1.5em;
-        }
-        .section-content {
-            padding: 20px;
-            display: none;
-        }
-        .section-content.active {
-            display: block;
-        }
-        h2 {
-            margin: 0;
-            font-size: 1.5em;
-        }
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        li {
-            margin-bottom: 15px;
-        }
-        .job-title {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 1.1em;
-        }
-        .job-company {
-            font-style: italic;
-            color: var(--secondary-color);
-        }
-        .skill-bar {
-            background-color: #e0e0e0;
-            height: 10px;
-            border-radius: 5px;
-            margin-top: 5px;
-            overflow: hidden;
-        }
-        .skill-progress {
-            background-color: var(--secondary-color);
-            height: 100%;
-            border-radius: 5px;
-            transition: width 1s ease-out;
-            width: 0;
-        }
-        .toggle-icon {
-            transition: transform 0.3s ease;
-        }
-        .active .toggle-icon {
-            transform: rotate(180deg);
-        }
-        @media (max-width: 600px) {
-            .contact-info {
-                flex-direction: column;
-            }
-            .contact-item {
-                margin: 5px 0;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carlos Romaña — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Barlow:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#F4F2ED;
+  --white:#FFFFFF;
+  --ink:#111111;
+  --mid:#555555;
+  --soft:#999999;
+  --line:#DDDDDD;
+  --red:#C0392B;
+  --blue:#1A5276;
+  --teal:#0E6655;
+}
+
+body{
+  font-family:'Barlow',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  padding:40px 20px;
+  min-height:100vh;
+}
+
+.wrap{max-width:920px;margin:0 auto}
+
+/* ══ FOTO ══ */
+.hero-left{
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+.hero-photo-wrap{
+  flex-shrink:0;
+  width:110px;height:110px;
+  border-radius:4px;
+  overflow:hidden;
+  border:3px solid var(--ink);
+  background:#ddd;
+}
+.hero-photo{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+.hero-photo-fallback{
+  width:100%;height:100%;
+  background:var(--ink);
+  color:#fff;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:32px;
+  font-weight:800;
+  align-items:center;
+  justify-content:center;
+}
+.hc-row{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-bottom:4px;
+}
+.hc-row svg{
+  flex-shrink:0;
+  opacity:0.55;
+}
+
+/* ══ TOP BAR ══ */
+.topbar{
+  background:var(--ink);
+  padding:10px 36px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.topbar-left{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#888;
+}
+.topbar-right{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  color:#888;
+}
+
+/* ══ HERO ══ */
+.hero{
+  background:var(--white);
+  padding:40px 36px 32px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:24px;
+  align-items:end;
+  border-bottom:3px solid var(--ink);
+}
+
+.hero-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:72px;
+  font-weight:800;
+  line-height:0.9;
+  text-transform:uppercase;
+  letter-spacing:-2px;
+  color:var(--ink);
+}
+
+.hero-name span{
+  color:var(--red);
+  display:block;
+}
+
+.hero-sub{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:14px;
+  font-weight:500;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--mid);
+  margin-top:12px;
+}
+
+.hero-right{
+  text-align:right;
+}
+
+.hero-contact{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;
+  color:var(--mid);
+  line-height:2;
+}
+.hero-contact a{color:var(--blue);text-decoration:none}
+
+.chip-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  justify-content:flex-end;
+  margin-top:14px;
+}
+.chip{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  padding:4px 12px;
+  background:var(--ink);
+  color:#fff;
+  border-radius:1px;
+}
+.chip.outline{
+  background:transparent;
+  color:var(--ink);
+  border:1.5px solid var(--ink);
+}
+
+/* ══ BODY ══ */
+.body{
+  background:var(--white);
+  display:grid;
+  grid-template-columns:1fr 260px;
+}
+
+/* ══ MAIN ══ */
+.main{
+  padding:36px 36px 48px;
+  border-right:1px solid var(--line);
+}
+
+/* ══ SIDE ══ */
+.side{
+  padding:36px 28px 48px;
+}
+
+/* ══ SECTION ══ */
+.sec{margin-bottom:36px}
+.sec:last-child{margin-bottom:0}
+
+.sec-head{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.sec-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:2px;
+  color:var(--red);
+}
+
+.sec-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--ink);
+}
+
+.sec-rule{
+  flex:1;
+  height:1px;
+  background:var(--line);
+}
+
+/* SUMMARY */
+.summary{
+  font-size:14px;
+  font-weight:300;
+  color:var(--mid);
+  line-height:1.9;
+}
+.summary strong{color:var(--ink);font-weight:500}
+
+/* JOB */
+.job{
+  display:grid;
+  grid-template-columns:3px 1fr;
+  gap:0 18px;
+  margin-bottom:24px;
+}
+.job:last-child{margin-bottom:0}
+
+.job-line{
+  background:var(--line);
+  border-radius:2px;
+  position:relative;
+}
+.job.current .job-line{background:var(--red)}
+
+.job-dot{
+  width:9px;height:9px;
+  border-radius:50%;
+  background:var(--white);
+  border:2px solid var(--line);
+  position:absolute;
+  top:4px;left:-3px;
+}
+.job.current .job-dot{
+  border-color:var(--red);
+  background:var(--red);
+}
+
+.job-content{}
+
+.job-meta{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:4px;
+  margin-bottom:2px;
+}
+
+.job-role{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:17px;
+  font-weight:700;
+  letter-spacing:0.5px;
+  text-transform:uppercase;
+  color:var(--ink);
+}
+
+.job-date{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  color:var(--soft);
+  white-space:nowrap;
+}
+
+.job-company{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--blue);
+  margin-bottom:8px;
+}
+
+.now{
+  display:inline-block;
+  background:var(--red);
+  color:#fff;
+  font-family:'JetBrains Mono',monospace;
+  font-size:8px;
+  padding:2px 7px;
+  border-radius:1px;
+  margin-left:8px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  vertical-align:middle;
+}
+
+.job-bullets{list-style:none}
+.job-bullets li{
+  font-size:12.5px;
+  font-weight:300;
+  color:var(--mid);
+  padding:3px 0 3px 14px;
+  position:relative;
+  line-height:1.6;
+}
+.job-bullets li::before{
+  content:'›';
+  position:absolute;left:0;
+  color:var(--red);
+  font-weight:700;
+}
+
+.proj-head{
+  font-family:'JetBrains Mono',monospace;
+  font-size:8.5px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#C0922B;
+  margin:10px 0 5px;
+}
+
+/* ══ SIDE SECTIONS ══ */
+.side-sec{margin-bottom:28px}
+.side-sec:last-child{margin-bottom:0}
+
+.side-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--ink);
+  padding-bottom:8px;
+  border-bottom:2px solid var(--ink);
+  margin-bottom:14px;
+}
+
+/* EDU */
+.edu-item{margin-bottom:13px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.edu-item:last-child{border:none;margin-bottom:0;padding-bottom:0}
+.edu-deg{font-size:12.5px;font-weight:500;color:var(--ink);line-height:1.4}
+.edu-school{font-size:11px;color:var(--blue);margin-top:2px;font-weight:500}
+.edu-yr{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--soft);margin-top:2px}
+
+/* CERTS */
+.cert{
+  font-size:11.5px;
+  font-weight:300;
+  color:var(--mid);
+  padding:5px 0;
+  border-bottom:1px solid var(--line);
+  line-height:1.4;
+}
+.cert:last-child{border:none}
+
+/* SKILLS */
+.sk{margin-bottom:10px}
+.sk-top{display:flex;justify-content:space-between;margin-bottom:4px}
+.sk-name{font-size:11.5px;color:var(--ink);font-weight:400}
+.sk-val{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--soft)}
+.sk-bar{height:2px;background:var(--line);border-radius:1px;overflow:hidden}
+.sk-fill{height:100%;background:var(--ink);border-radius:1px;width:0;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
+
+/* LANGS */
+.lang{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:9px;
+  font-size:12px;color:var(--mid);
+}
+.pips{display:flex;gap:4px}
+.pip{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.pip.on{background:var(--ink)}
+
+/* ══ FOOTER STRIP ══ */
+.footer{
+  background:var(--ink);
+  padding:10px 36px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.footer span{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  color:#666;
+  letter-spacing:1px;
+}
+
+@media(max-width:680px){
+  .hero{grid-template-columns:1fr}
+  .chip-row{justify-content:flex-start}
+  .hero-right{text-align:left}
+  .body{grid-template-columns:1fr}
+  .hero-name{font-size:48px}
+  .topbar,footer{padding-left:20px;padding-right:20px}
+}
+
+@media print{
+  body{background:white;padding:0}
+  .wrap{max-width:100%}
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="profile-picture.jpg" alt="Carlos Romaña Tuesta" class="profile-picture">
-            <h1>Carlos Romaña Tuesta</h1>
-            <p class="subtitle">Ingeniero en Redes y Telecomunicaciones | Especialista en Seguridad de Red | Experto en SD-WAN</p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                    71395542
-                </div>
-                <div class="contact-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    carlosromana@upsa.bo
-                </div>
-                <div class="contact-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                    <a href="https://bo.linkedin.com/in/carlos-roma%C3%B1a-2035bab6" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none;">LinkedIn</a>
-                </div>
-                <div class="contact-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    Condominio Florencia, Santa Cruz - Bolivia
-                </div>
-            </div>
-        </header>
-        <main>
-            <section>
-                <div class="section-header" onclick="toggleSection('resumen')">
-                    <div class="section-title">
-                        <span class="section-icon">📋</span>
-                        <h2>Resumen Profesional</h2>
-                    </div>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div id="resumen" class="section-content active">
-                    <p>Ingeniero en Redes y Telecomunicaciones con más de <strong>8 años de experiencia</strong> en la industria tecnológica de Bolivia. Especializado en <strong>diseño e implementación de infraestructuras de red robustas y seguras</strong>, con un enfoque particular en soluciones SD-WAN y seguridad de red. Líder técnico con habilidades probadas en la gestión de proyectos complejos y la optimización de infraestructuras IT para empresas de gran escala. Experto en <strong>tecnologías CISCO, Fortinet, y soluciones de virtualización</strong>, con un historial demostrado de mejora en la eficiencia operativa y la seguridad de redes empresariales. Amplia experiencia en sistemas Linux, uso de contenedores (Docker), y monitoreo de infraestructura, incluyendo servidores, redes y bases de datos. Fuerte compromiso con la innovación tecnológica para garantizar soluciones eficientes y escalables.</p>
-                </div>
-            </section>
-            <section>
-                <div class="section-header" onclick="toggleSection('experiencia')">
-                    <div class="section-title">
-                        <span class="section-icon">💼</span>
-                        <h2>Experiencia Laboral</h2>
-                    </div>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div id="experiencia" class="section-content">
-                    <ul>
-                        <li>
-                            <div class="job-title">Jefe de Infraestructura y comunicación TI</div>
-                            <div class="job-company">GRUPO EMPRESARIAL LAFUENTE (2021-Actualmente)</div>
-                            <ul>
-                                <li>Lideré la implementación de SD-WAN con Firewall Fortigate a nivel nacional, revolucionando la conectividad y seguridad de las más de 50 sucursales, resultando en una mejora significativa de la eficiencia de la red.</li>
-                                <li>Orquesté una arquitectura de microservicios utilizando Docker, catapultando la escalabilidad y el rendimiento de las aplicaciones críticas del negocio. Esta implementación optimizó significativamente el uso de recursos como CPU, memoria y disco, permitiendo una utilización más eficiente de la infraestructura y reduciendo los costos operativos.</li>
-                                <li>Diseñé e implementé un sistema de monitoreo de última generación utilizando NETDATA, CADVISOR, PROMETHEUS y GRAFANA, abarcando redes, servidores y servicios. Este sistema, complementado con scripts personalizados en Shell para sensores especializados, redujo el tiempo de detección y resolución de problemas significativamente.</li>
-                                <li>Optimicé y aseguré las bases de datos PostgreSQL, implementando controles de seguridad avanzados con PgBouncer y sistemas de monitoreo de actividad, resultando en una mejora significativa del rendimiento y la integridad de los datos.</li>
-                                <li>Lideré la actualización estratégica del Directorio Activo y el servidor de correo electrónico, mejorando significativamente la gestión de identidades y la comunicación interna de la empresa.</li>
-                                <li>Implementé controles de seguridad basados en la norma ISO 27001, elevando la postura de seguridad de la organización a estándares internacionales y reduciendo los incidentes de seguridad significativamente.</li>
-                                <li>Pionero en la adopción de Ansible para la gestión de infraestructura, automatizando tareas repetitivas y reduciendo el tiempo de despliegue de nuevos servicios significativamente, marcando un antes y un después en la eficiencia operativa del departamento.</li>
-                                <li>Implementé Netbox como sistema centralizado de gestión de infraestructura de red (IPAM/DCIM), mejorando drásticamente la documentación, planificación y gestión de recursos de red en toda la organización.</li>
-                                <li>Desplegué Wazuh como plataforma de seguridad y cumplimiento, integrando análisis de logs, detección de intrusiones y monitoreo de integridad de archivos. Esta implementación fortaleció significativamente nuestra postura de seguridad y capacidad de respuesta a incidentes.</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div class="job-title">Administrador de Redes</div>
-                            <div class="job-company">GRUPO EMPRESARIAL LAFUENTE (2017-2021)</div>
-                            <ul>
-                                <li>Diseñé e implementé soluciones de seguridad con Fortinet, reduciendo los incidentes de seguridad significativamente.</li>
-                                <li>Lideré la migración y actualización de la red CORE en alta disponibilidad, logrando un alto porcentaje de uptime para servicios críticos.</li>
-                                <li>Implementé soluciones de redes inalámbricas con CISCO MERAKI, mejorando la cobertura y rendimiento de la red Wi-Fi significativamente.</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div class="job-title">Ingeniero de Soporte Técnico</div>
-                            <div class="job-company">SOLINTEC S.R.L (2016-2017)</div>
-                            <ul>
-                                <li>Implementación de un Router Balanceador de enlaces PEPLINK para YPFB Corporación.</li>
-                                <li>Implementación de Firewall CISCO ASA Next Generation para la red nacional CORE de IMCRUZ.</li>
-                                <li>Implementación de red LAN con Switchs CISCO CATALYST en todas las agencias de IMCRUZ a nivel nacional.</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div class="job-title">Asistente de Laboratorios de redes</div>
-                            <div class="job-company">UNIVERSIDAD PRIVADA DE SANTA CRUZ DE LA SIERRA (2013-2016)</div>
-                            <ul>
-                                <li>Soporte técnico preventivo y correctivo a equipos de networking CISCO.</li>
-                                <li>Inventarios de activos a equipos de networking.</li>
-                                <li>Preparación de laboratorios para los alumnos de la academia CISCO.</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-            <section>
-                <div class="section-header" onclick="toggleSection('educacion')">
-                    <div class="section-title">
-                        <span class="section-icon">🎓</span>
-                        <h2>Educación</h2>
-                    </div>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div id="educacion" class="section-content">
-                    <ul>
-                        <li>Licenciatura en Ingeniería de Redes y Telecomunicaciones - UNIVERSIDAD PRIVADA DE SANTA CRUZ DE LA SIERRA - UPSA (2019)</li>
-                        <li>CISCO Networking Academy - CCNA</li>
-                        <li>Bachiller en humanidades (2009)</li>
-                    </ul>
-                </div>
-            </section>
-            <section>
-                <div class="section-header" onclick="toggleSection('certificaciones')">
-                    <div class="section-title">
-                        <span class="section-icon">🏆</span>
-                        <h2>Certificaciones</h2>
-                    </div>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div id="certificaciones" class="section-content">
-                    <ul>
-                        <li>Cisco Certified Network Professional Enterprise</li>
-                        <li>Cisco Certified Specialist - Enterprise Core</li>
-                        <li>Cisco Certified Specialist - Enterprise Advanced Infrastructure Implementation</li>
-                        <li>Cisco Certified Network Associate (CCNA)</li>
-                        <li>NSE 4 Network Security Professional</li>
-                        <li>NSE3 Network Security Associate</li>
-                        
-                        <li>NSE2 Network Security Associate</li>
-                        <li>NSE1 Network Security Associate</li>
-                        <li>SCRUM FOUNDATION PROFESSIONAL CERTIFICATE SFPC</li>
-                        <li>YEASTAR Certified Technician</li>
-                        <li>Grandstream Certified Specialist "UC Solution"</li>
-                        <li>VSP 2016, VMware Sales Professional</li>
-                        <li>Ubiquiti Broadband Wireless Specialist</li>
-                    </ul>
-                </div>
-            </section>
-            <section>
-                <div class="section-header" onclick="toggleSection('cursos')">
-                    <div class="section-title">
-                        <span class="section-icon">📚</span>
-                        <h2>Cursos</h2>
-                    </div>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div id="cursos" class="section-content">
-                    <ul>
-                        <li>CCNA EXPLORATION 1: Network fundamentals (UPSA REGIONAL ACADEMY, 2012)</li>
-                        <li>CCNA EXPLORATION 2: Routing Protocols & Concepts (UPSA REGIONAL ACADEMY, 2013)</li>
-                        <li>CCNA EXPLORATION 3: LAN Switching and Wireless (UPSA REGIONAL ACADEMY, 2013)</li>
-                        <li>TELEFONÍA IP: Taller básico acerca de telefonía IP con Elastix (Escuela tecnológica, 2014)</li>
-                        <li>TELEFONÍA IP: Experto en telefonía IP Grandstream (DIGICORP, 2018)</li>
-                        <li>TALLER DE CIBERSEGURIDAD (COGNOS BOLIVIA, 2019)</li>
-                        <li>INTRODUCCIÓN A LA SEGURIDAD CIBERNÉTICA (Cisco Networking Academy, 2019)</li>
-                        <li>NAGIOS: El estándar de monitoreo de infraestructura (Udemy Academy, 2019)</li>
-                        <li>Fortigate Essentiales 6.2 (FORTINET NSE INSTITUTE, 2021)</li>
-                        <li>NS7 SD-WAN 6.4 (FORTINET NSE INSTITUTE, 2021)</li>
-                    </ul>
-                </div>
-            </section>
-            <section>
-                <div class="section-header" onclick="toggleSection('habilidades')">
-                    <div class="section-title">
-                        <span class="section-icon">🛠️</span>
-                        <h2>Habilidades Técnicas</h2>
-                    </div>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div id="habilidades" class="section-content">
-                    <ul>
-                        <li>
-                            <div>Redes CISCO</div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 0%" data-width="95%"></div></div>
-                        </li>
-                        <li>
-                            <div>Seguridad de red</div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 0%" data-width="90%"></div></div>
-                        </li>
-                        <li>
-                            <div>SD-WAN</div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 0%" data-width="85%"></div></div>
-                        </li>
-                        <li>
-                            <div>Firewall Fortigate</div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 0%" data-width="88%"></div></div>
-                        </li>
-                        <li>
-                            <div>Docker</div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 0%" data-width="80%"></div></div>
-                        </li>
-                        <li>
-                            <div>Linux</div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 0%" data-width="90%"></div></div>
-                        </li>
-                        <li>
-                            <div>Nginx</div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 0%" data-width="85%"></div></div>
-                        </li>
-                        <li>
-                            <div>Herramientas de monitoreo (Nagios, Grafana, Prometheus, Netdata)</div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 0%" data-width="88%"></div></div>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-            <section>
-                <div class="section-header" onclick="toggleSection('idiomas')">
-                    <div class="section-title">
-                        <span class="section-icon">🌎</span>
-                        <h2>Idiomas</h2>
-                    </div>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div id="idiomas" class="section-content">
-                    <ul>
-                        <li>
-                            <div>Español</div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 0%" data-width="100%"></div></div>
-                        </li>
-                        <li>
-                            <div>Portugués</div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 0%" data-width="100%"></div></div>
-                        </li>
-                        <li>
-                            <div>Inglés</div>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 0%" data-width="40%"></div></div>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-        </main>
-    </div>
-    <script>
-        function toggleSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            const header = section.previousElementSibling;
-            const icon = header.querySelector('.toggle-icon');
-            section.classList.toggle('active');
-            header.classList.toggle('active');
-            icon.textContent = section.classList.contains('active') ? '▲' : '▼';
-            
-            if (section.classList.contains('active')) {
-                const skillBars = section.querySelectorAll('.skill-progress');
-                skillBars.forEach(bar => {
-                    setTimeout(() => {
-                        bar.style.width = bar.dataset.width;
-                    }, 50);
-                });
-            }
-        }
+<div class="wrap">
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            skillBars.forEach(bar => {
-                if (bar.closest('.section-content').classList.contains('active')) {
-                    bar.style.width = bar.dataset.width;
-                }
-            });
-        });
-    </script>
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <span class="topbar-left">Curriculum Vitae · 2026</span>
+    <span class="topbar-right">Santa Cruz de la Sierra, Bolivia</span>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-photo-wrap">
+        <img src="profile-picture.jpg" alt="Carlos Romaña Tuesta" class="hero-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="hero-photo-fallback" style="display:none">CR</div>
+      </div>
+      <div>
+        <div class="hero-name">Carlos<span>Romaña</span></div>
+        <div class="hero-sub">Network &amp; Security Engineer · Infraestructura · Ciberseguridad · Automatización</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-contact">
+        <div class="hc-row">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +591 71395542
+        </div>
+        <div class="hc-row">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:carlosromana17@gmail.com">carlosromana17@gmail.com</a>
+        </div>
+        <div class="hc-row">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://bo.linkedin.com/in/carlosalfredo-romaña-tuesta-2035bab6" target="_blank">linkedin.com/in/carlosromana</a>
+        </div>
+        <div class="hc-row">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Santa Cruz de la Sierra, Bolivia
+        </div>
+      </div>
+      <div class="chip-row">
+        <span class="chip">CCNP</span>
+        <span class="chip">NSE4</span>
+        <span class="chip outline">CCNA</span>
+        <span class="chip outline">MSc. Ciberseguridad</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- MAIN -->
+    <div class="main">
+
+      <div class="sec">
+        <div class="sec-head">
+          <span class="sec-num">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            01
+          </span>
+          <span class="sec-title">Perfil</span>
+          <div class="sec-rule"></div>
+        </div>
+        <p class="summary">
+          Ingeniero de redes con <strong>más de 9 años</strong> en infraestructura corporativa, seguridad y automatización. Diseño entornos con <strong>visibilidad real</strong> y controles alineados a <strong>ISO 27001 y NIST CSF 2.0</strong>. Experto en Cisco, Fortinet, Proxmox, Docker y stacks de monitoreo (Prometheus, Grafana, Nagios). Enfocado en reducir riesgo, optimizar operaciones y garantizar continuidad del negocio.
+        </p>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <span class="sec-num">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            02
+          </span>
+          <span class="sec-title">Experiencia</span>
+          <div class="sec-rule"></div>
+        </div>
+
+        <div class="job current">
+          <div class="job-line"><div class="job-dot"></div></div>
+          <div class="job-content">
+            <div class="job-meta">
+              <div class="job-role">Jefe Nacional de Infraestructura, Seguridad y Redes <span class="now">Actual</span></div>
+              <div class="job-date">ABR 2026 →</div>
+            </div>
+            <div class="job-company">Unión Agronegocios S.A. — Unagro · Santa Cruz, Bolivia</div>
+            <ul class="job-bullets">
+              <li>Gestión integral de infraestructura TI en 9 sucursales a nivel nacional: servidores, redes, telecomunicaciones, seguridad y servicios críticos.</li>
+              <li>Diseño e implementación de políticas y controles de seguridad de la información alineados a NIST CSF 2.0 e ISO 27001, incluyendo documentación normativa (políticas, procedimientos e instructivos corporativos).</li>
+              <li>Modernización del Data Center principal y estandarización de infraestructura en sedes remotas.</li>
+              <li>Automatización de reportes diarios de infraestructura vía n8n integrando Prometheus, Grafana y Veeam (firewalls, WAN, servidores, backups y ERP TOTVS Protheus).</li>
+              <li>Implementación de MDM para 260 dispositivos Android corporativos (Scalefusion).</li>
+              <li>Liderazgo de equipo técnico de infraestructura y redes; gestión de proveedores y negociación de contratos de telecomunicaciones.</li>
+              <li>Soporte especializado de segundo y tercer nivel en plataformas críticas: Proxmox, FortiGate, Active Directory, SQL Server, TOTVS Protheus.</li>
+            </ul>
+            <div class="proj-head">Proyectos destacados</div>
+            <ul class="job-bullets">
+              <li>Acondicionamiento y certificación Tier II+ del Data Center principal (243 horas adicionales de proyecto).</li>
+              <li>Implementación de SD-WAN, mejorando disponibilidad, seguridad y aprovechamiento de enlaces en todas las sucursales.</li>
+              <li>Migración de servidores físicos a virtuales en Proxmox, incluyendo migración de Hyper-V Windows Server 2003.</li>
+              <li>Implementación de arquitectura de backup y recuperación con Veeam, incluyendo exportador Prometheus para monitoreo.</li>
+              <li>Diseño de dashboards NOC en Grafana para visibilidad de servidores, WAN/Internet y servicios críticos.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="job-line"><div class="job-dot"></div></div>
+          <div class="job-content">
+            <div class="job-meta">
+              <div class="job-role">Especialista en Infraestructura y Redes</div>
+              <div class="job-date">FEB 2025 — ABR 2026</div>
+            </div>
+            <div class="job-company">Unión Agronegocios S.A. — Unagro · Bolivia</div>
+            <ul class="job-bullets">
+              <li>Gestión y evolución de la infraestructura tecnológica corporativa, asegurando disponibilidad, seguridad y continuidad operativa.</li>
+              <li>Implementación de SD-WAN mejorando disponibilidad, seguridad y aprovechamiento de enlaces WAN.</li>
+              <li>Optimización y ampliación de la red WiFi corporativa en oficina central y sucursales.</li>
+              <li>Migración de servidores físicos a virtuales en Proxmox, optimizando rendimiento y continuidad operativa.</li>
+              <li>Implementación de infraestructura basada en contenedores Docker para servicios críticos.</li>
+              <li>Diseño e implementación de soluciones de backup y recuperación con Veeam.</li>
+              <li>Configuración de Nginx como reverse proxy para aplicaciones críticas (Zend Framework).</li>
+              <li>Implementación de stacks de monitoreo con Prometheus, Grafana y Nagios para detección temprana de incidentes.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="job-line"><div class="job-dot"></div></div>
+          <div class="job-content">
+            <div class="job-meta">
+              <div class="job-role">Jefe de Infraestructura y Comunicación TI</div>
+              <div class="job-date">AGO 2021 — FEB 2025</div>
+            </div>
+            <div class="job-company">Grupo Empresarial Lafuente S.R.L. · 3 años 7 meses</div>
+            <ul class="job-bullets">
+              <li>Liderazgo integral de la infraestructura tecnológica corporativa: servidores físicos y virtuales, redes, telecomunicaciones, ciberseguridad y continuidad operativa para más de 600 usuarios en 12+ sucursales.</li>
+              <li>Implementación de SD-WAN con Firewalls FortiGate a nivel nacional, revolucionando la conectividad y seguridad de más de 50 sucursales.</li>
+              <li>Orquestación de arquitectura de microservicios con Docker (Nginx, Pentaho ETL, MariaDB, PostgreSQL), optimizando el uso de recursos de CPU, memoria y disco.</li>
+              <li>Diseño e implementación de sistema de monitoreo con Netdata, cAdvisor, Prometheus y Grafana, abarcando redes, servidores y servicios críticos.</li>
+              <li>Automatización de administración de Firewalls Fortinet y servidores Linux mediante Ansible, reduciendo errores operativos y tiempos de intervención.</li>
+              <li>Implementación de controles de ciberseguridad alineados a ISO 27001: desarrollo de procedimientos, formularios y políticas corporativas.</li>
+              <li>Despliegue de Wazuh como plataforma SIEM/XDR: análisis de logs, detección de intrusiones y monitoreo de integridad de archivos.</li>
+              <li>Implementación de Netbox como sistema centralizado IPAM/DCIM para toda la organización.</li>
+              <li>Optimización y seguridad de bases de datos PostgreSQL con PgBouncer y monitoreo avanzado de actividad.</li>
+              <li>Gestión de proyectos tecnológicos estratégicos: planificación, ejecución y coordinación con proveedores.</li>
+            </ul>
+            <div class="proj-head">Proyectos destacados</div>
+            <ul class="job-bullets">
+              <li>SD-WAN FortiGate + IPsec VPN a nivel nacional — mejora de disponibilidad, seguridad perimetral y rendimiento de comunicaciones.</li>
+              <li>Plugins personalizados en Shell Script para monitoreo avanzado de servicios en servidores Linux vía Nagios Core (NRPE).</li>
+              <li>Migración estratégica y actualización del Directorio Activo y servidor de correo corporativo.</li>
+              <li>Infraestructura Docker para servicios críticos: Nginx, ETL Pentaho, bases de datos MariaDB y PostgreSQL.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="job-line"><div class="job-dot"></div></div>
+          <div class="job-content">
+            <div class="job-meta">
+              <div class="job-role">Administrador de Redes</div>
+              <div class="job-date">ENE 2017 — AGO 2021</div>
+            </div>
+            <div class="job-company">Grupo Empresarial Lafuente S.R.L. · 4 años 8 meses</div>
+            <ul class="job-bullets">
+              <li>Administración y evolución de la infraestructura de redes corporativas LAN, WAN y WiFi, garantizando disponibilidad, seguridad y rendimiento.</li>
+              <li>Implementación de Firewalls Fortinet Next-Generation: IPS/IDS, Web &amp; Application Filtering, VPN IPsec y SSL, enrutamiento estático y dinámico (OSPF).</li>
+              <li>Implementación de soluciones de monitoreo usando PRTG, Netdata, Prometheus y Nagios Core integrados con Grafana para dashboards operativos y ejecutivos.</li>
+              <li>Diseño e implementación de redes inalámbricas gestionadas en la nube con Cisco Meraki, mejorando cobertura, estabilidad y gestión centralizada.</li>
+              <li>Implementación de radio-enlaces con equipos Ubiquiti para conectividad entre sitios remotos.</li>
+              <li>Administración de redes LAN sobre switches Cisco Catalyst: VTP, STP, VLANs y NTP.</li>
+              <li>Implementación y administración de soluciones de telefonía IP (VoIP) con Elastix, Issabel, Yeastar y dispositivos Grandstream.</li>
+              <li>Monitoreo proactivo e infraestructura para detección temprana de incidentes y optimización del desempeño.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="job-line"><div class="job-dot"></div></div>
+          <div class="job-content">
+            <div class="job-meta">
+              <div class="job-role">Ingeniero de Soporte de Redes</div>
+              <div class="job-date">MAR 2016 — ENE 2017</div>
+            </div>
+            <div class="job-company">SOLINTEC S.R.L. · 11 meses</div>
+            <ul class="job-bullets">
+              <li>Participación en implementación de proyectos de redes y seguridad enfocados en Routing &amp; Switching, seguridad perimetral y balanceo de enlaces.</li>
+              <li>Implementación de Router Balanceador de Enlaces Peplink 1350 para YPFB Corporación, mejorando disponibilidad y continuidad del servicio.</li>
+              <li>Implementación de Cisco ASA Next-Generation Firewall 5545 para la red CORE de IMCRUZ.</li>
+              <li>Implementación de redes LAN corporativas en Santa Cruz y La Paz con equipamiento Cisco Catalyst.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="job-line"><div class="job-dot"></div></div>
+          <div class="job-content">
+            <div class="job-meta">
+              <div class="job-role">Asistente de Laboratorio de Redes</div>
+              <div class="job-date">FEB 2013 — DIC 2016</div>
+            </div>
+            <div class="job-company">Universidad Privada de Santa Cruz — UPSA · Cisco Regional Academy</div>
+            <ul class="job-bullets">
+              <li>Soporte académico y técnico en laboratorios de redes: Redes I, II, III y IV.</li>
+              <li>Soporte técnico preventivo y correctivo a equipos de networking Cisco.</li>
+              <li>Apoyo a docentes y estudiantes en la configuración y pruebas de infraestructura de red.</li>
+              <li>Inventario y gestión de activos de equipos de networking.</li>
+              <li>Preparación de laboratorios para alumnos de la Academia Cisco.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <span class="sec-num">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            03
+          </span>
+          <span class="sec-title">Formación Complementaria</span>
+          <div class="sec-rule"></div>
+        </div>
+        <div class="job">
+          <div class="job-line"><div class="job-dot"></div></div>
+          <div class="job-content">
+            <div class="job-meta">
+              <div class="job-role">FortiGate Essentials 6.2</div>
+              <div class="job-date">2021</div>
+            </div>
+            <div class="job-company">Fortinet NSE Institute</div>
+          </div>
+        </div>
+        <div class="job">
+          <div class="job-line"><div class="job-dot"></div></div>
+          <div class="job-content">
+            <div class="job-meta">
+              <div class="job-role">NS7 SD-WAN 6.4</div>
+              <div class="job-date">2021</div>
+            </div>
+            <div class="job-company">Fortinet NSE Institute</div>
+          </div>
+        </div>
+        <div class="job">
+          <div class="job-line"><div class="job-dot"></div></div>
+          <div class="job-content">
+            <div class="job-meta">
+              <div class="job-role">Nagios: El estándar de monitoreo de infraestructura</div>
+              <div class="job-date">2019</div>
+            </div>
+            <div class="job-company">Udemy Academy</div>
+          </div>
+        </div>
+        <div class="job">
+          <div class="job-line"><div class="job-dot"></div></div>
+          <div class="job-content">
+            <div class="job-meta">
+              <div class="job-role">Taller de Ciberseguridad</div>
+              <div class="job-date">2019</div>
+            </div>
+            <div class="job-company">Cognos Bolivia</div>
+          </div>
+        </div>
+        <div class="job">
+          <div class="job-line"><div class="job-dot"></div></div>
+          <div class="job-content">
+            <div class="job-meta">
+              <div class="job-role">Introducción a la Seguridad Cibernética</div>
+              <div class="job-date">2019</div>
+            </div>
+            <div class="job-company">Cisco Networking Academy</div>
+          </div>
+        </div>
+        <div class="job">
+          <div class="job-line"><div class="job-dot"></div></div>
+          <div class="job-content">
+            <div class="job-meta">
+              <div class="job-role">Telefonía IP Experto Grandstream</div>
+              <div class="job-date">2018</div>
+            </div>
+            <div class="job-company">DIGICORP</div>
+          </div>
+        </div>
+        <div class="job">
+          <div class="job-line"><div class="job-dot"></div></div>
+          <div class="job-content">
+            <div class="job-meta">
+              <div class="job-role">Telefonía IP: Taller básico con Elastix</div>
+              <div class="job-date">2014</div>
+            </div>
+            <div class="job-company">Escuela Tecnológica</div>
+          </div>
+        </div>
+        <div class="job">
+          <div class="job-line"><div class="job-dot"></div></div>
+          <div class="job-content">
+            <div class="job-meta">
+              <div class="job-role">CCNA Exploration 1, 2 y 3 — Network Fundamentals · Routing Protocols · LAN Switching</div>
+              <div class="job-date">2012–2013</div>
+            </div>
+            <div class="job-company">UPSA Regional Academy — Cisco Networking Academy</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDE -->
+    <div class="side">
+
+      <div class="side-sec">
+        <div class="side-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px;opacity:.6"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          Educación
+        </div>
+        <div class="edu-item">
+          <div class="edu-deg">Maestría en Ciberseguridad y Ciberdefensa</div>
+          <div class="edu-school">UAGRM</div>
+          <div class="edu-yr">2025 – 2026 · En curso</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-deg">Diplomado Auditoría y Cumplimiento en Ciberseguridad</div>
+          <div class="edu-school">UAGRM</div>
+          <div class="edu-yr">Dic 2025 – May 2026</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-deg">Diplomado Ciberseg. Estratégica y Operacional</div>
+          <div class="edu-school">UAGRM</div>
+          <div class="edu-yr">May – Nov 2025</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-deg">Licenciatura en Ingeniería de Redes y Telecomunicaciones</div>
+          <div class="edu-school">UPSA</div>
+          <div class="edu-yr">2010 – 2014 · Grado 2019</div>
+        </div>
+      </div>
+
+      <div class="side-sec">
+        <div class="side-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px;opacity:.6"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          Certificaciones
+        </div>
+        <div class="cert">CCNP Enterprise</div>
+        <div class="cert">Cisco Specialist — Enterprise Core</div>
+        <div class="cert">Cisco Specialist — Enterprise Advanced</div>
+        <div class="cert">CCNA</div>
+        <div class="cert">NSE 4 Network Security Professional</div>
+        <div class="cert">NSE 3 / 2 / 1</div>
+        <div class="cert">Cybersecurity Awareness (CAPC)</div>
+        <div class="cert">SCRUM Foundation (SFPC)</div>
+        <div class="cert">Yeastar Certified Technician</div>
+        <div class="cert">Grandstream Certified Specialist</div>
+      </div>
+
+      <div class="side-sec">
+        <div class="side-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px;opacity:.6"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          Habilidades
+        </div>
+        <div class="sk">
+          <div class="sk-top"><span class="sk-name">Redes Cisco</span><span class="sk-val">95%</span></div>
+          <div class="sk-bar"><div class="sk-fill" data-w="95%"></div></div>
+        </div>
+        <div class="sk">
+          <div class="sk-top"><span class="sk-name">FortiGate / SD-WAN</span><span class="sk-val">90%</span></div>
+          <div class="sk-bar"><div class="sk-fill" data-w="90%"></div></div>
+        </div>
+        <div class="sk">
+          <div class="sk-top"><span class="sk-name">Linux / Shell</span><span class="sk-val">88%</span></div>
+          <div class="sk-bar"><div class="sk-fill" data-w="88%"></div></div>
+        </div>
+        <div class="sk">
+          <div class="sk-top"><span class="sk-name">Prometheus / Grafana</span><span class="sk-val">88%</span></div>
+          <div class="sk-bar"><div class="sk-fill" data-w="88%"></div></div>
+        </div>
+        <div class="sk">
+          <div class="sk-top"><span class="sk-name">Docker / Proxmox</span><span class="sk-val">82%</span></div>
+          <div class="sk-bar"><div class="sk-fill" data-w="82%"></div></div>
+        </div>
+        <div class="sk">
+          <div class="sk-top"><span class="sk-name">ISO 27001 / NIST CSF</span><span class="sk-val">85%</span></div>
+          <div class="sk-bar"><div class="sk-fill" data-w="85%"></div></div>
+        </div>
+        <div class="sk">
+          <div class="sk-top"><span class="sk-name">Ansible / n8n</span><span class="sk-val">78%</span></div>
+          <div class="sk-bar"><div class="sk-fill" data-w="78%"></div></div>
+        </div>
+      </div>
+
+      <div class="side-sec">
+        <div class="side-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px;opacity:.6"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Idiomas
+        </div>
+        <div class="lang"><span>Español</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div></div>
+        <div class="lang"><span>Portugués</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div></div>
+        <div class="lang"><span>Inglés</span><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div></div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>Carlos Alfredo Romaña Tuesta</span>
+    <span>carlosromana17@gmail.com · +591 71395542</span>
+    <span>Mayo 2026</span>
+  </div>
+
+</div>
+<script>
+  window.addEventListener('load',()=>{
+    document.querySelectorAll('.sk-fill').forEach(b=>{
+      setTimeout(()=>{b.style.width=b.dataset.w},200);
+    });
+  });
+</script>
 </body>
 </html>
